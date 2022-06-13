@@ -21,7 +21,7 @@ function searchCityWeather () {
 
     var weatherData = getWeather(cityName)
 
-    // to do
+
 } 
 
 $("#search-city").on("click", searchCityWeather)
