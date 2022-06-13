@@ -7,6 +7,6 @@ Weather data from  OpenWeatherMap!
 
 ## Website
 
-https://github.com/remishn/Weather-Dashboard
-https://remishn.github.io/Weather-Dashboard/
+### https://github.com/remishn/Weather-Dashboard
+#### https://remishn.github.io/Weather-Dashboard/
 
