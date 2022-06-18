@@ -13,15 +13,26 @@ async function getWeather (cityName) {
 
     var weatherData = await response.json()
 
-    console.log(weatherData)
+    return weatherData
 }
 
-function searchCityWeather () {
+async function searchCityWeather () {
     var cityName = $("#cityname").val()
 
-    var weatherData = getWeather(cityName)
+    var weatherData = await getWeather(cityName)
+    console.log(weatherData)
+
+    var d = new Date(weatherData.dt * 1000) 
+    var month = d.getMonth() + 1
+    var date = d.getDate()
+    var year = d.getFullYear()
+    
+    var currentCityName = weatherData.name
+    var currentDate = month + "/" + date + "/" + year
 
 
+    $("#current-city-name").html(currentCityName + " " + currentDate)
+    // 
 } 
 
 $("#search-city").on("click", searchCityWeather)
