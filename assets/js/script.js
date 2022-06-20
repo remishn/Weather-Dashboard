@@ -6,7 +6,7 @@ var searchHistoryList = []
 
 async function getWeather (cityName) {
 
-    var url = baseUrl + "q=" + cityName + "&" + "appid=" + apiKey
+    var url = baseUrl + "q=" + cityName + "&" + "units=imperial" + "&" + "appid=" + apiKey
     console.log(url)
 
     var response = await fetch(url)
@@ -29,17 +29,24 @@ async function searchCityWeather () {
 
     
     var currentCityName = weatherData.name
-    var currentDate = month + "/" + date + "/" + year
+    var iconCode = weatherData.weather[0].icon
+    var iconURL = "https://openweathermap.org/img/w/" + iconCode + ".png"
+    console.log(iconURL)
+    
+    
+    // var currentDate = month + "/" + date + "/" + year
 
     var temp = weatherData.main.temp 
     var wind = weatherData.wind.speed
     var humidity = weatherData.main.humidity
 
-    $("#current-city-name").html(currentCityName + " " + currentDate)
+    $("#current-city-name").html(currentCityName + " " + today)
 
-    $("#temp").html("temp: " + temp)
+    $("#current-weather-icon").attr("src", iconURL)
+
+    $("#temp").html("temp: " + temp + " °F" )
     $("#wind").html("wind: " + wind)
-    $("#humidity").html("humidity: " + humidity)
+    $("#humidity").html("humidity: " + humidity + " %")
    
     // 
 } 
