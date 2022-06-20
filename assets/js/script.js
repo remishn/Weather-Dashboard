@@ -26,12 +26,21 @@ async function searchCityWeather () {
     var month = d.getMonth() + 1
     var date = d.getDate()
     var year = d.getFullYear()
+
     
     var currentCityName = weatherData.name
     var currentDate = month + "/" + date + "/" + year
 
+    var temp = weatherData.main.temp 
+    var wind = weatherData.wind.speed
+    var humidity = weatherData.main.humidity
 
     $("#current-city-name").html(currentCityName + " " + currentDate)
+
+    $("#temp").html("temp: " + temp)
+    $("#wind").html("wind: " + wind)
+    $("#humidity").html("humidity: " + humidity)
+   
     // 
 } 
 
