@@ -32,7 +32,7 @@ async function getWeather (lat, lon) {
 
 function createWeatherEL(dailyWeather) {
     var weatherCardEl = $("<div>").addClass("weather-card")
-
+    
     var date = new Date(dailyWeather.dt * 1000)
     var m = date.getMonth() + 1
     var d = date.getDate()
