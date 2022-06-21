@@ -66,9 +66,7 @@ function createWeatherEL(dailyWeather) {
     return weatherCardEl
 }
 
-async function searchCityWeather () {
-    var cityName = $("#cityname").val()
-
+async function renderWeatherDashboard(cityName) {
     var locationData = await getLocation(cityName)
 
     var weatherData = await getWeather(locationData.lat, locationData.lon)
@@ -99,13 +97,28 @@ async function searchCityWeather () {
     
         $("#five-day").append(dailyWeatherEl)
     }
+}
 
-    var newBtn = $("<button>")
-        .addClass("search-history-button")
-        .data("cityName", cityName)
-        .html(cityName)
+function searchCityWeatherHistory(event) {
+    renderWeatherDashboard(event.target.dataset.cityname)
+}
 
-    $("#search-history").append(newBtn)
+async function searchCityWeather () {
+    var cityName = $("#cityname").val()
+
+    if (!searchHistoryList.includes(cityName)) {
+        searchHistoryList.push(cityName)
+
+        var newBtn = $("<button>")
+            .addClass("search-history-button")
+            .click(searchCityWeatherHistory)
+            .attr("data-cityname", cityName)
+            .html(cityName)
+
+        $("#search-history").append(newBtn)
+    }
+
+    renderWeatherDashboard(cityName)    
 } 
 
 
