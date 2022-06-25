@@ -3,6 +3,7 @@ var apiKey = "ca2963db17af18af45304b6b90b9de79"
 var today = moment().format("L")
 var searchHistoryList = []
 
+
 async function getLocation (cityName) {
     var baseLocationURL = "http://api.openweathermap.org/geo/1.0/direct"
 
@@ -28,6 +29,8 @@ async function getWeather (lat, lon) {
     var weatherData = await response.json()
 
     return weatherData
+    
+
 }
 
 function createWeatherEL(dailyWeather) {
@@ -64,6 +67,7 @@ function createWeatherEL(dailyWeather) {
         .append(weatherHumidityEl)
 
     return weatherCardEl
+    
 }
 
 async function renderWeatherDashboard(cityName) {
@@ -85,9 +89,9 @@ async function renderWeatherDashboard(cityName) {
 
     $("#current-weather-icon").attr("src", iconURL)
 
-    $("#temp").html("temp: " + temp + " °F" )
-    $("#wind").html("wind: " + wind)
-    $("#humidity").html("humidity: " + humidity + " %")
+    $("#temp").html("Temp: " + temp + " °F" )
+    $("#wind").html("Wind: " + wind + " MPH")
+    $("#humidity").html("Humidity: " + humidity + " %")
     $("#uv-index").html("UV Index: " + uvIndex)
 
 
@@ -96,11 +100,14 @@ async function renderWeatherDashboard(cityName) {
         var dailyWeatherEl = createWeatherEL(dailyWeather)
     
         $("#five-day").append(dailyWeatherEl)
+               
     }
 }
 
 function searchCityWeatherHistory(event) {
     renderWeatherDashboard(event.target.dataset.cityname)
+    
+    $("#five-day").empty();
 }
 
 async function searchCityWeather () {
@@ -116,12 +123,15 @@ async function searchCityWeather () {
             .html(cityName)
 
         $("#search-history").append(newBtn)
+
+        localStorage.setItem("city name", JSON.stringify(searchHistoryList));
+        
+        $("#five-day").empty();
     }
 
-    renderWeatherDashboard(cityName)    
+    renderWeatherDashboard(cityName)  
+    $("#five-day").empty()    
+        
 } 
-
-
-// future weather 
 
 $("#search-city").on("click", searchCityWeather)
