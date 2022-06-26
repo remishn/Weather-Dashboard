@@ -5,7 +5,7 @@ var searchHistoryList = []
 
 
 async function getLocation (cityName) {
-    var baseLocationURL = "http://api.openweathermap.org/geo/1.0/direct"
+    var baseLocationURL = "https://api.openweathermap.org/geo/1.0/direct"
 
     var URL = baseLocationURL + "?q=" + cityName + "&" + "appid=" + apiKey
 
