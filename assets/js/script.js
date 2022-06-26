@@ -57,7 +57,7 @@ function createWeatherEL(dailyWeather) {
 
     var weatherHumidityEl = $("<div>")
         .addClass("weather-card-humidity")
-        .html("Humidity: " + dailyWeather.humidity + "%")
+        .html("Humidity: " + dailyWeather.humidity + "%")    
 
     $(weatherCardEl)
         .append(weatherDateEl)
@@ -85,6 +85,8 @@ async function renderWeatherDashboard(cityName) {
     var uvIndex = weatherData.current.uvi
 
 
+
+
     $("#current-city-name").html(cityName + " " + today)
 
     $("#current-weather-icon").attr("src", iconURL)
@@ -93,6 +95,16 @@ async function renderWeatherDashboard(cityName) {
     $("#wind").html("Wind: " + wind + " MPH")
     $("#humidity").html("Humidity: " + humidity + " %")
     $("#uv-index").html("UV Index: " + uvIndex)
+
+    if (uvIndex >= 0 && uvIndex <= 2) {
+        $("#uv-index").css("background-color" ,"green")
+    }
+    else if (uvIndex >= 3 && uvIndex <= 7) {
+        $("#uv-index").css("background-color" , "orange")
+    }
+    else {
+        $("#uv-index").css("background-color" , "red")
+    }
 
 
     for (var i = 1; i < 6; i++) {

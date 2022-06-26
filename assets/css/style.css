@@ -7,34 +7,53 @@ h1 {
 .weather-card {
   
   flex: 1 0 20%;
-  border: 1px solid black;
-
-
+  border: 5px solid rgb(190, 183, 183);
+  border-radius: 15px;
+  background: #708257;
+  padding: 20px;
+  width: 200px;
+  height: 200px;
+  font-style: inherit;
+  font-family: sans-serif;
+ 
 }
 #weatherContent {
   display: none;
   flex-direction: row;
+  text-transform: capitalize;
+}
+
+p#uv-index {
+  margin-right: 800px;
 }
 
 .navbar {
   height: 150px;
 }
 
-#cityDetail,
-#uvIndexColor,
+#current-city-name,
+
+
 li {
   color: #4D4F53;
+  text-transform: capitalize;
 }
-
-
 
 #searchResults {
   height: 100vh;
 }
 
-.searchHistory-button {
+.search-history-button {
   background-color: #97A6A4;
   color: #f8f8ff;
+  font-family: sans-serif;
+  text-transform: capitalize;
+  flex-wrap: wrap;
+  overflow-wrap: break-word;
+
+}
+input#cityname.form-control {
+  content-visibility: visible;
 }
 
 p {
